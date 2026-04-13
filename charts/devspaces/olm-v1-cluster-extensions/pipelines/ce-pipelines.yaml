@@ -1,0 +1,14 @@
+apiVersion: olm.operatorframework.io/v1
+kind: ClusterExtension
+metadata:
+  name: pipeline-operator
+spec:
+  namespace: pipelines-operator
+  serviceAccount:
+    name: pipelines-installer-sa
+  source:
+    sourceType: Catalog
+    catalog:
+      packageName: openshift-pipelines-operator-rh
+      channel: latest
+      version: "1.18.0"

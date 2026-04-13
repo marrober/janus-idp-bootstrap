@@ -1,0 +1,14 @@
+apiVersion: olm.operatorframework.io/v1
+kind: ClusterExtension
+metadata:
+  name: web-terminal-operator
+spec:
+  namespace: web-terminal-operator
+  serviceAccount:
+    name: web-terminal-installer-sa
+  source:
+    sourceType: Catalog
+    catalog:
+      packageName: web-terminal
+      channel: fast
+      version: "1.13.0"

@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dev-spaces
+  namespace: openshift-gitops
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: openshift-devspaces
+  source:
+    repoURL: https://github.com/marrober/janus-idp-bootstrap.git
+    path: charts/devspaces
+    targetRevision: main
+    helm:
+      parameters:
+      - name: oauth.clientId
+        value: 0942c548f666d0c4ef8f14363ef9825c9b18080d29b4e9f6b8ec3eef8a4961cf
+      - name: oauth.clientSecret
+        value: gloas-9bcb91fca2fc17f91e396cf6c892f0e52774464b7d82aee8a7416ed2ecee2b29
+      - name: oauth.provider
+        value: https://gitlab-gitlab.apps.cluster-pkkdf.pkkdf.sandbox3534.opentlc.com
+  syncPolicy:
+    automated: 
+      prune: true 
+      selfHeal: true 
+      allowEmpty: false 
+    syncOptions: 
+      - Validate=true 
+      - CreateNamespace=true 
+      - PrunePropagationPolicy=foreground 
+      - PruneLast=true 
+    retry:
+      limit: 1 
+      backoff:
+        duration: 5s 
+        factor: 2 
+        maxDuration: 20s 

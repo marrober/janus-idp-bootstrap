@@ -1,0 +1,17 @@
+apiVersion: olm.operatorframework.io/v1
+kind: ClusterExtension
+metadata:
+  name: devspaces-operator
+spec:
+  packageName: devspaces
+  namespace: dev-spaces-operator
+  installNamespace: dev-spaces-operator
+  version: "3.24.0"
+  serviceAccount:
+    name: dev-spaces-installer-sa
+  source:
+    sourceType: Catalog
+    catalog:
+      packageName: devspaces
+      channels:
+        - stable
