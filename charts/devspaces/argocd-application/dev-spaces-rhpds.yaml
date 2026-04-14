@@ -15,9 +15,9 @@ spec:
     helm:
       parameters:
       - name: oauth.clientId
-        value: 0942c548f666d0c4ef8f14363ef9825c9b18080d29b4e9f6b8ec3eef8a4961cf
+        value: 
       - name: oauth.clientSecret
-        value: gloas-9bcb91fca2fc17f91e396cf6c892f0e52774464b7d82aee8a7416ed2ecee2b29
+        value: 
       - name: oauth.provider
         value: https://gitlab-gitlab.apps.cluster-pkkdf.pkkdf.sandbox3534.opentlc.com
   syncPolicy:
